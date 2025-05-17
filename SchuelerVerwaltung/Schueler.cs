@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
-public class Schueler
+namespace SchuelerVerwaltung
 {
-	public string name;
-	public int alter;
-	public string klasse;
-	public Schueler(string name, int alter, string klasse)
-	{
-		this.name = name;
-		this.alter = alter;
-		this.klasse = klasse;
-	}
 
-	public void Ausgabe()
+	public class Schueler
 	{
-		Console.WriteLine($"Name: {name}, Alter: {alter}, Klasse: {klasse}");
+		public string name;
+		public int alter;
+		public string klasse;
+		public Schueler(string name, int alter, string klasse)
+		{
+			this.name = name;
+			this.alter = alter;
+			this.klasse = klasse;
+		}
+
+		public void Ausgabe()
+		{
+			Console.WriteLine($"Name: {name}, Alter: {alter}, Klasse: {klasse}");
+		}
 	}
 }
