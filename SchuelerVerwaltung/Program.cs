@@ -50,7 +50,13 @@ namespace SchuelerVerwaltung
         static void SchuelerHinzufuegen()
         {
             Console.WriteLine("Name: ");
-            string name = Console.ReadLine();
+            string? eingabeName = Console.ReadLine();
+            if (eingabeName == null)
+            {
+                Console.WriteLine("Ungültige Eingabe für Name!");
+                return;
+            }
+            string name = eingabeName;
 
             Console.WriteLine("Alter: ");
             if (!int.TryParse(Console.ReadLine(), out int alter))
@@ -60,7 +66,12 @@ namespace SchuelerVerwaltung
             }
 
             Console.WriteLine("Klasse: ");
-            string klasse = Console.ReadLine();
+            string? eingabeKlasse = Console.ReadLine();
+            if (eingabeKlasse == null)
+            { Console.WriteLine("Ungültige Eingabe für Klasse!");
+                return;
+            }
+            string klasse = eingabeKlasse;
 
             Schueler s = new Schueler(name, alter, klasse);
             schuelerListe.Add(s);
@@ -69,6 +80,12 @@ namespace SchuelerVerwaltung
 
         static void SchuelerAnzeigen()
         {
+            if (schuelerListe.Count == 0)
+            {
+                Console.WriteLine("Keine Schüler vorhanden.");
+                return;
+            }
+
             foreach (var s in schuelerListe)
             {
                 s.Ausgabe();
@@ -79,7 +96,7 @@ namespace SchuelerVerwaltung
         {
             schuelerListe.Sort((a, b) => a.name.CompareTo(b.name));
             Console.WriteLine("\nSchüler wurden Alphabetisch nach Name sortiert.");
-            
+
             // Jetzt die Schüler anzeigen
             foreach (var s in schuelerListe)
             {
